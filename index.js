@@ -17,17 +17,18 @@ const currentMonth = currentDate.getDate() <= 15 ? currentDate.getMonth() : curr
 const daysInCurrentMonth = daysInMonth(currentYear, currentDate.getMonth());
 let stringToCopy = '';
 
-for (let i = 0; i < daysInCurrentMonth; i++) {
-    let stringedDate = `${currentYear}-${zeroBeforeDate(currentMonth)}-${zeroBeforeDate(i + 1)}`;
+for (let day = 0; day < daysInCurrentMonth; day++) {
+    let stringedDate = `${currentYear}-${zeroBeforeDate(currentMonth)}-${zeroBeforeDate(day + 1)}`;
 
-    if (isHoliday(stringedDate) || i % 7 === 6 || i % 7 === 5) {
-        stringToCopy = stringToCopy.concat((`${i + 1}.${zeroBeforeDate(currentMonth)} 0 \n`));
+    if (isHoliday(stringedDate) || day % 7 === 6 || day % 7 === 5) {
+        stringToCopy = stringToCopy.concat((`${day + 1}.${zeroBeforeDate(currentMonth)} 0 \n`));
     }
 
     else {
-        stringToCopy = stringToCopy.concat((`${i + 1}.${zeroBeforeDate(currentMonth)} 8 \n`));
+        stringToCopy = stringToCopy.concat((`${day + 1}.${zeroBeforeDate(currentMonth)} 8 \n`));
     }
 }
 
+console.log(stringToCopy)
 clipboardy.writeSync(stringToCopy);
 clipboardy.readSync();
