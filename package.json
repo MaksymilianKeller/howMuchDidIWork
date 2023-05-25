@@ -1,0 +1,13 @@
+{
+  "name": "howmuchdidiwork",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "clipboardy": "^3.0.0",
+    "poland-public-holidays": "^4.0.0"
+  },
+  "type": "module"
+}
