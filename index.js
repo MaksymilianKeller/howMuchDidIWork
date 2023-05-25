@@ -18,7 +18,7 @@ const daysInCurrentMonth = daysInMonth(currentYear, currentDate.getMonth());
 let stringToCopy = '';
 
 for (let day = 0; day < daysInCurrentMonth; day++) {
-    let stringedDate = `${currentYear}-${zeroBeforeDate(currentMonth)}-${zeroBeforeDate(day + 1)}`;
+    const stringedDate = `${currentYear}-${zeroBeforeDate(currentMonth)}-${zeroBeforeDate(day + 1)}`;
 
     if (isHoliday(stringedDate) || day % 7 === 6 || day % 7 === 5) {
         stringToCopy = stringToCopy.concat((`${day + 1}.${zeroBeforeDate(currentMonth)} 0 \n`));
@@ -29,6 +29,5 @@ for (let day = 0; day < daysInCurrentMonth; day++) {
     }
 }
 
-console.log(stringToCopy)
 clipboardy.writeSync(stringToCopy);
 clipboardy.readSync();
