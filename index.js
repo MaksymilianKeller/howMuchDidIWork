@@ -21,11 +21,11 @@ for (let day = 0; day < daysInCurrentMonth; day++) {
     const stringedDate = `${currentYear}-${zeroBeforeDate(currentMonth)}-${zeroBeforeDate(day + 1)}`;
 
     if (isHoliday(stringedDate) || day % 7 === 6 || day % 7 === 5) {
-        stringToCopy = stringToCopy.concat((`${day + 1}.${zeroBeforeDate(currentMonth)} 0 \n`));
+        stringToCopy = stringToCopy.concat(`${day + 1}.${zeroBeforeDate(currentMonth)} 0 \n`);
     }
 
     else {
-        stringToCopy = stringToCopy.concat((`${day + 1}.${zeroBeforeDate(currentMonth)} 8 \n`));
+        stringToCopy = stringToCopy.concat(`${day + 1}.${zeroBeforeDate(currentMonth)} 8 \n`);
     }
 }
 
