@@ -12,14 +12,8 @@ function zeroBeforeDate(date) {
 }
 
 const currentDate = new Date();
-
-let currentMonth = currentDate.getMonth() + 1;
 const currentYear = currentDate.getFullYear();
-
-if (currentDate.getDate() <= 15) {
-    currentMonth -= 1;
-}
-
+const currentMonth = currentDate.getDate() <= 15 ? currentDate.getMonth() : currentDate.getMonth() + 1;
 const daysInCurrentMonth = daysInMonth(currentYear, currentDate.getMonth());
 let stringToCopy = '';
 
