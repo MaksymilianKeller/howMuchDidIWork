@@ -4,6 +4,7 @@ import clipboardy from 'clipboardy';
 function daysInMonth(year, month) {
     return new Date(year, month, 0).getDate();
 }
+
 function zeroBeforeDate(date) {
     if (date.toString().length < 2) {
         return `0${date}`;
