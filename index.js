@@ -1,4 +1,4 @@
-import { isHoliday } from 'poland-public-holidays';
+import { isWeekendOrHoliday } from 'poland-public-holidays';
 import clipboardy from 'clipboardy';
 
 function daysInMonth(year, month) {
@@ -15,18 +15,18 @@ function zeroBeforeDate(date) {
 const currentDate = new Date();
 const currentYear = currentDate.getFullYear();
 const currentMonth = currentDate.getDate() <= 15 ? currentDate.getMonth() : currentDate.getMonth() + 1;
-const daysInCurrentMonth = daysInMonth(currentYear, currentDate.getMonth());
+const daysInCurrentMonth = daysInMonth(currentYear, currentMonth);
 let stringToCopy = '';
 
-for (let day = 0; day < daysInCurrentMonth; day++) {
-    const stringedDate = `${currentYear}-${zeroBeforeDate(currentMonth)}-${zeroBeforeDate(day + 1)}`;
+for (let day = 1; day <= daysInCurrentMonth; day++) {
+    const stringedDate = `${currentYear}-${zeroBeforeDate(currentMonth)}-${zeroBeforeDate(day)}`;
 
-    if (isHoliday(stringedDate) || day % 7 === 6 || day % 7 === 5) {
-        stringToCopy = stringToCopy.concat(`${day + 1}.${zeroBeforeDate(currentMonth)} 0 \n`);
+    if (isWeekendOrHoliday(new Date(stringedDate))) {
+        stringToCopy = stringToCopy.concat(`${day}.${zeroBeforeDate(currentMonth)} 0 \n`);
     }
 
     else {
-        stringToCopy = stringToCopy.concat(`${day + 1}.${zeroBeforeDate(currentMonth)} 8 \n`);
+        stringToCopy = stringToCopy.concat(`${day}.${zeroBeforeDate(currentMonth)} 8 \n`);
     }
 }
 
